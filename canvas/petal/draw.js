@@ -75,7 +75,7 @@ var wrap = document.getElementById("canvas-wrap"),
 			ctx.translate(w+x-10,w+y);
 
 			ctx.rotate(rads(this.angle));
-			// ctx.scale(scale,scale);
+			ctx.scale(scale,scale);
 			
 			ctx.beginPath();
 			
