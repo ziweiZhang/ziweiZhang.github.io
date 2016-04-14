@@ -100,34 +100,4 @@ var wrap = document.getElementById("canvas-wrap"),
 			this.angle += speedA;
 		}
 	}
-	function _flower(){
-
-		var w = 50,ratio=0.1,x=300,peekhole;
-		ctx.save();
-		// ctx.translate(w+100,w);
-		// ctx.rotate(rads(90));
-		peekhole=ctx.createRadialGradient(w*(2-ratio)+x-10,w,w*ratio,w+x-10,w,w);
-		peekhole.addColorStop(0.0,"#d92310");
-		peekhole.addColorStop(ratio,"#ffb5ab");
-		peekhole.addColorStop(0.3,"#ffb5ab");
-		peekhole.addColorStop(0.9,"#d92310");
-		ctx.fillStyle = peekhole;
-				ctx.beginPath();
-		// ctx.moveTo(85,w-20);
-		// ctx.quadraticCurveTo(120,w-50,175,w);
-		// ctx.quadraticCurveTo(120,w+50,85,w+20);
-
-		// ctx.quadraticCurveTo(65,w,85,w-20);
-		
-		ctx.moveTo(x,w-20);
-		ctx.quadraticCurveTo(x+45,w-50,x+80,w);
-		ctx.quadraticCurveTo(x+45,w+50,x,w+20);
-
-		ctx.quadraticCurveTo(x-10,w,x,w-20);
-
-		ctx.closePath();
-		ctx.fill();
-		// ctx.fillRect(0,0,w*2,w*2)
-		// ctx.stroke();
-		ctx.restore();
-	}
+	

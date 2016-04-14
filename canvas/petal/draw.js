@@ -11,6 +11,8 @@ var wrap = document.getElementById("canvas-wrap"),
 	}
 	function animate(){
 		var f,i=0,n=80,fs=[];
+		// var w = new Worker("worker.js");
+		// w.postMessage("");
 		for(;i<n;i++){
 			f = new Flower(Math.random()*200-100,-Math.random()*200-100,Math.random()*90,Math.random()*0.1+0.2,Math.random()*2/100+0.005,Math.random()*3/100+0.005,Math.random()*3+0.1);
 			fs.push(f);
@@ -24,11 +26,7 @@ var wrap = document.getElementById("canvas-wrap"),
 			// ctx.fillStyle="black";
 			ctx.clearRect(0,0,cvs.width,cvs.height);
 			ctx.drawImage(bg,(cvs.width-bg.width)/2,(cvs.height-bg.height)/2,bg.width,bg.height);
-		// var w = new Worker("draw.js");
-		// w.postMessage({
-		// 	n:n,
-		// 	fs:fs
-		// })
+		
 			for(i=0;i<n;i++){
 				fs[i].draw();
 				if(fs[i].x>=cvs.width||fs[i].y>cvs.height){
@@ -40,7 +38,7 @@ var wrap = document.getElementById("canvas-wrap"),
 				}
 			}
 			
-		},1000/60);
+		},1000/30);
 	}
 	function rads(x){
 		return Math.PI*x/180;
@@ -100,34 +98,4 @@ var wrap = document.getElementById("canvas-wrap"),
 			this.angle += speedA;
 		}
 	}
-	function _flower(){
-
-		var w = 50,ratio=0.1,x=300,peekhole;
-		ctx.save();
-		// ctx.translate(w+100,w);
-		// ctx.rotate(rads(90));
-		peekhole=ctx.createRadialGradient(w*(2-ratio)+x-10,w,w*ratio,w+x-10,w,w);
-		peekhole.addColorStop(0.0,"#d92310");
-		peekhole.addColorStop(ratio,"#ffb5ab");
-		peekhole.addColorStop(0.3,"#ffb5ab");
-		peekhole.addColorStop(0.9,"#d92310");
-		ctx.fillStyle = peekhole;
-				ctx.beginPath();
-		// ctx.moveTo(85,w-20);
-		// ctx.quadraticCurveTo(120,w-50,175,w);
-		// ctx.quadraticCurveTo(120,w+50,85,w+20);
-
-		// ctx.quadraticCurveTo(65,w,85,w-20);
-		
-		ctx.moveTo(x,w-20);
-		ctx.quadraticCurveTo(x+45,w-50,x+80,w);
-		ctx.quadraticCurveTo(x+45,w+50,x,w+20);
-
-		ctx.quadraticCurveTo(x-10,w,x,w-20);
-
-		ctx.closePath();
-		ctx.fill();
-		// ctx.fillRect(0,0,w*2,w*2)
-		// ctx.stroke();
-		ctx.restore();
-	}
+	
