@@ -38,7 +38,7 @@ var wrap = document.getElementById("canvas-wrap"),
 				}
 			}
 			
-		},1000/30);
+		},1000/60);
 	}
 	function rads(x){
 		return Math.PI*x/180;
@@ -55,20 +55,28 @@ var wrap = document.getElementById("canvas-wrap"),
 		this.curveDown = Math.random()*20;
 		this.type = Math.floor(Math.random()*3);
 		this.num = 0;
-		this.draw = function(){
-			var w = 50,ratio=0.1,x=this.x,y = this.y,peekhole;
-			ctx.save();
-			
-			ctx.translate(w+x-10,w+y);
+		this.w=50;
+		this.peekhole = null;
 
-			ctx.rotate(rads(this.angle));
-			ctx.scale(scale,scale);
+		this.init = function(){
+			var w = this.w,ratio=0.1;
 			peekhole=ctx.createRadialGradient(w*(2-ratio),w,w*ratio,w,w,w);
 			peekhole.addColorStop(0.0,"#d92310");
 			peekhole.addColorStop(ratio,"#ffb5ab");
 			peekhole.addColorStop(0.3,"#ffb5ab");
 			peekhole.addColorStop(0.9,"#d92310");
+		}
+		this.init();
+		this.draw = function(){
+			var w = this.w,x=this.x,y = this.y;
+			ctx.save();
+			
 			ctx.fillStyle = peekhole;
+			ctx.translate(w+x-10,w+y);
+
+			ctx.rotate(rads(this.angle));
+			// ctx.scale(scale,scale);
+			
 			ctx.beginPath();
 			
 			ctx.moveTo(10,w-20);
@@ -98,4 +106,3 @@ var wrap = document.getElementById("canvas-wrap"),
 			this.angle += speedA;
 		}
 	}
-	
