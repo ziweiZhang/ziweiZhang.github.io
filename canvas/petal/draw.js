@@ -1,3 +1,7 @@
+var ua = window.navigator['userAgent'].toLowerCase(),
+    isAndroid = /Android|HTC/i.test(ua), 
+    isIOS =  !isAndroid && /iPod|iPad|iPhone/i.test(ua),
+    isPC = !isAndroid&&!isIOS;
 var cvs = document.getElementById("flowers"),
 	ctx = cvs.getContext("2d"),
 	_scale = 1,
@@ -18,7 +22,7 @@ var cvs = document.getElementById("flowers"),
 
 	// console.log(moveX+","+_scale)
 	function animate(){
-		var f,i=0,n=40,fs=[];
+		var f,i=0,n=isPC?80:30,fs=[];
 		for(;i<n;i++){
 			f = new Flower(Math.random()*100-200,-Math.random()*100-100,Math.random()*90,Math.random()*0.1+0.2,Math.random()*2/100+0.01,Math.random()*3/100+0.005,Math.random()*3+0.1);
 			fs.push(f);
@@ -108,6 +112,5 @@ var cvs = document.getElementById("flowers"),
 			this.x += this.num*speedX;
 			this.y += this.num*speedY;
 			this.angle += speedA;
-			this.scale += 0.002;
 		}
 	}
