@@ -14,7 +14,7 @@ var wrap = document.getElementById("canvas-wrap"),
 		// var w = new Worker("worker.js");
 		// w.postMessage("");
 		for(;i<n;i++){
-			f = new Flower(Math.random()*200-100,-Math.random()*200-100,Math.random()*90,Math.random()*0.1+0.2,Math.random()*2/100+0.005,Math.random()*3/100+0.005,Math.random()*3+0.1);
+			f = new Flower(Math.random()*100-100,-Math.random()*200-100,Math.random()*90,Math.random()*0.1+0.2,Math.random()*2/200+0.005,Math.random()*3/100+0.005,Math.random()*3+0.1);
 			fs.push(f);
 		}
 		// ctx.clearRect(0,0,cvs.width,cvs.height);
@@ -30,7 +30,7 @@ var wrap = document.getElementById("canvas-wrap"),
 			for(i=0;i<n;i++){
 				fs[i].draw();
 				if(fs[i].x>=cvs.width||fs[i].y>cvs.height){
-					fs[i].x = Math.random()*200-100;
+					fs[i].x = Math.random()*100-100;
 					fs[i].y = -Math.random()*200-100;
 					fs[i].angle = Math.random()*90;
 					fs[i].scale = Math.random()*0.1+0.2;
