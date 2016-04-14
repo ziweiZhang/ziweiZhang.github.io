@@ -72,7 +72,13 @@ var colors = [
 			f = new Flower(Math.random()*100-200,-Math.random()*100-100,Math.random()*90,Math.random()*0.1+0.2,Math.random()*2/100+0.01,Math.random()*3/100+0.005,Math.random()*3+0.1);
 			fs.push(f);
 		}
-		
+		textInterId = setInterval(function(){
+			textN++;
+			changeAlpha =0;
+			if(textN >= text.length){
+				clearInterval(textInterId);
+			}
+		},3000);
 		blow();
 	}
 	function blow(){
@@ -93,19 +99,32 @@ var colors = [
 		requestAnimFrame(blow);
 	}
 
-	var textN = 0;
+	var textN = 0,textInterId,changeAlpha = 0;
 	function drawText(){
 		ctx.save();
 		ctx.translate(_moveX,0);
 
 		ctx.scale(_scale,_scale);
 		ctx.textAlign = "center";
+		if(!isPC){
+			ctx.font = "18px microsoft yahei";
+		}
 		var i=0;
 		for(;i<text.length;i++){
+			if(i<textN){
+				ctx.globalAlpha =0.5;
+			}else if(i == textN){
+				ctx.globalAlpha =changeAlpha/7000;
+			}else{
+				ctx.globalAlpha = 0;
+			}
+			changeAlpha+=1;
+			changeAlpha = changeAlpha % 3500;
 			ctx.fillText(text[i],500,50+30*i);
 		}
 		
 		ctx.restore();
+
 	}
 
 	function drawTree(){
