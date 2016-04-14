@@ -56,7 +56,7 @@
 			// })
 				for(i=0;i<n;i++){
 					fs[i].draw();
-					if(fs[i].x>=600||fs[i].y>700){
+					if(fs[i].x>=cvs.width||fs[i].y>cvs.height){
 						fs[i].x = Math.random()*200-100;
 						fs[i].y = -Math.random()*200-100;
 						fs[i].angle = Math.random()*90;
