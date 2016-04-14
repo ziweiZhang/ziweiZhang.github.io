@@ -80,7 +80,7 @@ var cvs = document.getElementById("flowers"),
 			ctx.translate((w+x-10)*_scale+_moveX,(w+y)*_scale);
 
 			ctx.rotate(rads(this.angle));
-			ctx.scale(scale*_scale,scale*_scale);
+			ctx.scale(this.scale*_scale,this.scale*_scale);
 			
 			ctx.beginPath();
 			
@@ -108,5 +108,6 @@ var cvs = document.getElementById("flowers"),
 			this.x += this.num*speedX;
 			this.y += this.num*speedY;
 			this.angle += speedA;
+			this.scale += 0.002;
 		}
 	}
