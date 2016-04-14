@@ -1,30 +1,42 @@
-var wrap = document.getElementById("canvas-wrap"),
-	cvs = document.getElementById("flowers"),
+var cvs = document.getElementById("flowers"),
 	ctx = cvs.getContext("2d"),
+	_scale = 1,
+	_moveX = 0,
+	_width = 640,
+	_height = 1008;
 	bg = new Image();
-	cvs.width = wrap.offsetWidth;
-	cvs.height = wrap.offsetHeight;
+	
+	cvs.height = window.innerHeight;
+	_scale = window.innerHeight/_height;
+	cvs.width = window.innerWidth;
+	_moveX = (window.innerWidth-_width*_scale)/2;
 	bg.src="tree.jpg";
 	bg.onload=function(){
 		animate();
 
 	}
+
+	// console.log(moveX+","+_scale)
 	function animate(){
 		var f,i=0,n=40,fs=[];
 		for(;i<n;i++){
-			f = new Flower(Math.random()*100-100,-Math.random()*200-100,Math.random()*90,Math.random()*0.1+0.2,Math.random()*2/200+0.005,Math.random()*3/100+0.005,Math.random()*3+0.1);
+			f = new Flower(Math.random()*100-200,-Math.random()*100-100,Math.random()*90,Math.random()*0.1+0.2,Math.random()*2/100+0.01,Math.random()*3/100+0.005,Math.random()*3+0.1);
 			fs.push(f);
 		}
 		var id = setInterval(function(){
-			ctx.translate(0,0);
+			
 			ctx.clearRect(0,0,cvs.width,cvs.height);
-			ctx.drawImage(bg,(cvs.width-bg.width)/2,(cvs.height-bg.height)/2,bg.width,bg.height);
-		
+			ctx.save();
+			ctx.translate(_moveX,0);
+
+			ctx.scale(_scale,_scale);
+			ctx.drawImage(bg,(_width-bg.width)/2,(_height-bg.height)/2,bg.width,bg.height);
+			ctx.restore();
 			for(i=0;i<n;i++){
 				fs[i].draw();
-				if(fs[i].x>=cvs.width||fs[i].y>cvs.height){
-					fs[i].x = Math.random()*100-100;
-					fs[i].y = -Math.random()*200-100;
+				if(fs[i].x>=_width||fs[i].y>_height){
+					fs[i].x = Math.random()*100-200;
+					fs[i].y = -Math.random()*100-100;
 					fs[i].angle = Math.random()*90;
 					fs[i].scale = Math.random()*0.1+0.2;
 					fs[i].num = 0;
@@ -65,10 +77,10 @@ var wrap = document.getElementById("canvas-wrap"),
 			ctx.save();
 			
 			ctx.fillStyle = peekhole;
-			ctx.translate(w+x-10,w+y);
+			ctx.translate((w+x-10)*_scale+_moveX,(w+y)*_scale);
 
 			ctx.rotate(rads(this.angle));
-			ctx.scale(scale,scale);
+			ctx.scale(scale*_scale,scale*_scale);
 			
 			ctx.beginPath();
 			
