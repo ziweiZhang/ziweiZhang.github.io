@@ -62,7 +62,7 @@ var wrap = document.getElementById("canvas-wrap"),
 			ctx.translate(w+x-10,w+y);
 
 			ctx.rotate(rads(this.angle));
-			ctx.scale(scale,scale);
+			// ctx.scale(scale,scale);
 			peekhole=ctx.createRadialGradient(w*(2-ratio),w,w*ratio,w,w,w);
 			peekhole.addColorStop(0.0,"#d92310");
 			peekhole.addColorStop(ratio,"#ffb5ab");
