@@ -10,7 +10,7 @@ var wrap = document.getElementById("canvas-wrap"),
 
 	}
 	function animate(){
-		var f,i=0,n=20,fs=[];
+		var f,i=0,n=40,fs=[];
 		// var w = new Worker("worker.js");
 		// w.postMessage("");
 		for(;i<n;i++){
