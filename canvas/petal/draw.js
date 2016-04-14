@@ -11,19 +11,12 @@ var wrap = document.getElementById("canvas-wrap"),
 	}
 	function animate(){
 		var f,i=0,n=40,fs=[];
-		// var w = new Worker("worker.js");
-		// w.postMessage("");
 		for(;i<n;i++){
 			f = new Flower(Math.random()*100-100,-Math.random()*200-100,Math.random()*90,Math.random()*0.1+0.2,Math.random()*2/200+0.005,Math.random()*3/100+0.005,Math.random()*3+0.1);
 			fs.push(f);
 		}
-		// ctx.clearRect(0,0,cvs.width,cvs.height);
-		// ctx.drawImage(bg,(cvs.width-bg.width)/2,(cvs.height-bg.height)/2,bg.width,bg.height);
-
-		// new Flower(100,100,90,1,Math.random()*2/100,Math.random()*3/100,Math.random()*3+0.1).draw();
 		var id = setInterval(function(){
 			ctx.translate(0,0);
-			// ctx.fillStyle="black";
 			ctx.clearRect(0,0,cvs.width,cvs.height);
 			ctx.drawImage(bg,(cvs.width-bg.width)/2,(cvs.height-bg.height)/2,bg.width,bg.height);
 		
@@ -98,7 +91,6 @@ var wrap = document.getElementById("canvas-wrap"),
 
 			ctx.closePath();
 			ctx.fill();
-			// ctx.fillRect(0,0,w*2,w*2)
 			ctx.restore();
 			this.num++;
 			this.x += this.num*speedX;
