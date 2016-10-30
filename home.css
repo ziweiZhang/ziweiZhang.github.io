@@ -66,6 +66,7 @@ nav li{
 	height: 100px;
 	left: 0;
 	top: 0;
+	text-transform: uppercase;
 }
 nav li:nth-last-of-type{
 	margin-right: 0;
