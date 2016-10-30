@@ -68,7 +68,7 @@ nav li{
 	top: 0;
 	text-transform: uppercase;
 }
-nav li:nth-last-of-type{
+nav li:nth-last-of-type(1){
 	margin-right: 0;
 }
 nav a{
@@ -122,7 +122,7 @@ nav li:nth-last-of-type(1) a{
 	}
 	100%{
 		top: 0;
-		right: -20px;
+		right: 0px;
 		background: url(cz.png) no-repeat;
 		background-size: 100px 70px;
 	}
