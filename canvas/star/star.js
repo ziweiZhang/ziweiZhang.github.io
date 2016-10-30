@@ -13,23 +13,21 @@ return  window.requestAnimationFrame       ||
         };
 })();
 createStars(300);
-createMeteor(2);
+createMeteor(1);
 drawStars();
 
 function createMeteor(num){
 	var i=0,meteor;
 	for(;i<num;i++){
 		meteor = new Meteor({
-			x:Math.random()*cvs.width,
-			y:Math.random()*cvs.height,
-			speed:Math.random()*5,
+			x:Math.random()*cvs.width/2,
+			y:Math.random()*cvs.height/2,
+			speed:Math.random()*5+2,
 			length:Math.random()*100+20,
-			angle:Math.random()*Math.PI/2+Math.PI/3
+			angle:Math.random()*Math.PI/3+Math.PI/6
 		});
 		meteorArray.push(meteor);
 	}
-	
-	console.log(meteorArray)
 }
 function createStars(num){
 	var i = 0,star ,_n=250;
@@ -75,29 +73,39 @@ function Meteor(meteor){
 	this.angle = meteor.angle;
 	this.draw = function(){
 		ctx.save();
+		ctx.translate(cvs.width/2,cvs.height/2)
+		ctx.rotate(this.angle);
 		// ctx.fillStyle="#ffffff"
 		var ex=Math.floor(this.x+Math.cos(this.angle)*this.length),
 			ey=Math.floor(this.y+Math.sin(this.angle)*this.length),
-			grd=ctx.createLinearGradient(this.x,this.y,ex,ey);
-grd.addColorStop(1,"rgba(255,255,255,1)");
-grd.addColorStop(0.8,"rgba(255,255,255,0.8)");
-grd.addColorStop(0,"rgba(255,255,255,0)");
+			grd=ctx.createLinearGradient(
+				this.x-cvs.width/2,
+				this.y-cvs.height/2,
+				this.x+this.length-cvs.width/2,
+				this.y-cvs.height/2);
+		grd.addColorStop(1,"rgba(255,255,255,1)");
+		grd.addColorStop(0.8,"rgba(255,255,255,0.8)");
+		grd.addColorStop(0,"rgba(255,255,255,0)");
 		// ctx.strokeStyle="#ffffff";
 		ctx.strokeStyle=grd;
 		ctx.lineWidth = 2;
-		// ctx.beginPath();
-		ctx.moveTo(this.x,this.y);
-		// ctx.lineTo(this.x+100,this.y+100);
-		// ctx.strokeRect(this.x,this.y,10,10)
-		ctx.lineTo(ex,ey);
-		// ctx.closePath();
+		ctx.moveTo(this.x-cvs.width/2,this.y-cvs.height/2);
+		// ctx.lineTo(ex,ey);
+		ctx.lineTo(this.x+this.length-cvs.width/2,this.y-cvs.height/2);
 		ctx.stroke();
 		ctx.restore();
-		this.x+=Math.floor(Math.cos(this.angle)*this.speed);
-		this.y+=Math.floor(Math.sin(this.angle)*this.speed);
-		if(this.x>cvs.width||ex<0||this.y>cvs.height||ey<0){
-			this.x = Math.random()*cvs.width;
-			this.y = Math.random()*cvs.height;
+		// this.x+=Math.floor(Math.cos(this.angle)*this.speed);
+		// this.y+=Math.floor(Math.sin(this.angle)*this.speed);
+		this.x+=this.speed;
+
+		// console.log(this.x+","+this.y)
+		// if(this.x>cvs.width||ex<0||this.y>cvs.height||ey<0){
+		if(this.x>cvs.width){
+			this.x = Math.random()*cvs.width/2;
+			this.y = Math.random()*cvs.height/2;
+			this.speed=Math.random()*2+2;
+			this.length=Math.random()*100+20;
+			this.angle=Math.random()*Math.PI/3+Math.PI/6;
 		}
 	}
 }
