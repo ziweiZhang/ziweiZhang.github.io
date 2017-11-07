@@ -1,34 +1,33 @@
 <html>
 <head>
 	<meta name="charset" content="utf-8"></meta>
-	<title>ziweiZhang</title>
+	<title>小站</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="home.css">
+	<link rel="icon" type="image/x-icon" href="/images/logo.png">
+	<link rel="stylesheet" type="text/css" href="/css/home.css">
 </head>
 <body>
-	<div class="blur">
-		
-	</div>
-	
-	<div id="logo"><h3>Evy's Git</h3></div>
-	<div class="wrap">
-		<div class="dask">
+	<div class="container">
+		<div class="top-bar">
+			
+		</div>
+		<header>
+			<h3 id="title">Evy's Site</h3>
 			<nav>
 				<ul class="clearfix">
-				  	<li><a href="canvas/star">star</a></li>
-				  	<li><a href="canvas/petal">flower</a></li>
-				  	<li><a href="">wait</a></li>
+				  	<li><a id="nav-lab" href="javascript:void(0);">练习</a></li>
+				  	<li><a href="/blog">博客</a></li>
 				</ul>
 			</nav>
-			<img class="mtx" src="mtx.png">
-			<div id="msg"  title="open it">Welcome<p class="t-right">by evy</p></div>
-		</div>
+		</header>
+		<main>
+			<ul id="work-list">
+				<li><a href="/pages/canvas/star">星空</a></li>
+				<li><a href="/pages/canvas/petal">花瓣</a></li>
+			</ul>
+		</main>
 	</div>
-	<script type="text/javascript" src="canvas/lib/jquery.js"></script>
-	<script type="text/javascript">
-		$("#msg").click(function(){
-			$(this).toggleClass("big");
-		})
-	</script>
+	<script type="text/javascript" src="/js/lib/jquery.js"></script>
+	<script type="text/javascript" src="/js/home.js"></script>
 	</body>
 </html>
