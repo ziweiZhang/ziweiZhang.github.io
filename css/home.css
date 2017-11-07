@@ -6,6 +6,8 @@ body{
 }
 ul{
 	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 a{
 	text-decoration: none;
@@ -69,28 +71,30 @@ nav a:hover{
 #work-list{
 	position: relative;
 	height: 150px;
-	display: none;
+	opacity: 0;
+	transition: opacity .2s ease;
 }
 #work-list li{
 	position: absolute;
+	top: 100%;
 	width: 50px;
 	height: 50px;
 	line-height: 50px;
 	text-align: center;
 	padding: 10px;
 	border-radius: 50%;
-	transition: padding .2s ease, opacity .2s ease;
+	transition: padding .2s ease, opacity .2s ease, top 2s ease;
 }
 #work-list li:first-child{
-	bottom: 0;
-	left: 0;
-	animation: balloon 30s infinite alternate;
+	// bottom: 0;
+	left: 30%;
+	animation: balloon 8s 2s infinite alternate;
 	background: rgba(255, 255, 0, 0.3);
 }
 #work-list li:last-child{
-	top: 0;
-	right: 0;
-	animation: balloon2 30s infinite alternate;
+	// top: 0;
+	right: 30%;
+	animation: balloon2 8s 2s infinite alternate;
 	background: rgba(255, 50, 0, 0.2);
 
 }
@@ -101,27 +105,29 @@ nav a:hover{
 #work-list a{
 	display: block;
 }
+#work-list.show-animation{
+	opacity: 1;
+}
+#work-list.show-animation li{
+	top: 0;
+}
 @keyframes balloon2{
-	20%{
-		top: 80%;
-		right: 50%;
-		transform: rotate(-360deg);
+	50%{
+		right: 40%;
+		transform: rotate(-20deg);
 	}
 	100%{
-		top: 0;
-		right: 100%;
-		transform: rotate(-720deg);
+		right: 30%;
+		transform: rotate(20deg);
 	}
 }
 @keyframes balloon{
-	80%{
-		bottom: 80%;
-		left: 50%;
-		transform: rotate(360deg);
+	50%{
+		left: 40%;
+		transform: rotate(20deg);
 	}
 	100%{
-		bottom: 0;
-		left: 100%;
-		transform: rotate(720deg);
+		left: 30%;
+		transform: rotate(-20deg);
 	}
 }

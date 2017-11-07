@@ -1,3 +1,3 @@
 $("#nav-lab").on("click",function(){
-	$("#work-list").toggle();
+	$("#work-list").toggleClass("show-animation");
 });
