@@ -70,12 +70,12 @@ nav a:hover{
 
 #work-list{
 	position: relative;
-	height: 150px;
+	/*height: 150px;*/
 	opacity: 0;
-	transition: opacity .2s ease;
+	/*transition: opacity .2s ease;*/
 }
 #work-list li{
-	position: absolute;
+	/*position: absolute;
 	top: 100%;
 	width: 50px;
 	height: 50px;
@@ -83,27 +83,25 @@ nav a:hover{
 	text-align: center;
 	padding: 10px;
 	border-radius: 50%;
-	transition: padding .2s ease, opacity .2s ease, top 2s ease;
+	transition: padd*/ing .2s ease, opacity .2s ease, top 2s ease;
 }
-#work-list li:first-child{
-	// bottom: 0;
+/*#work-list li:first-child{
 	left: 30%;
 	animation: balloon 8s 2s infinite alternate;
 	background: rgba(255, 255, 0, 0.3);
 }
 #work-list li:last-child{
-	// top: 0;
 	right: 30%;
 	animation: balloon2 8s 2s infinite alternate;
 	background: rgba(255, 50, 0, 0.2);
 
-}
-#work-list li:hover{
+}*/
+/*#work-list li:hover{
 	padding: 20px;
 	opacity: 0.5;
-}
+}*/
 #work-list a{
-	display: block;
+	/*display: block;*/
 }
 #work-list.show-animation{
 	opacity: 1;
